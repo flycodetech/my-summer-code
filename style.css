@@ -1,0 +1,9 @@
+.hero-section{
+    background-image: url(./korea.jpg);
+    height:30%;
+    width:auto;
+    background-color:white;
+}
+nav{
+    background-color:red;
+}

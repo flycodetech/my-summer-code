@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduManage School System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="school.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header with Logo -->
+        <header class="header">
+            <div class="logo-container">
+                <img src="https://via.placeholder.com/50x50" alt="School Logo" class="logo">
+                <h1>EduManage</h1>
+            </div>
+            <div class="user-info">
+                <span id="username">Admin User</span>
+                <i class="fas fa-user-circle user-icon"></i>
+                <button id="logout-btn">Logout</button>
+            </div>
+        </header>
+
+        <!-- Navigation Sidebar -->
+        <nav class="sidebar">
+            <ul>
+                <li class="active" data-tab="dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</li>
+                <li data-tab="students"><i class="fas fa-users"></i> Students</li>
+                <li data-tab="teachers"><i class="fas fa-chalkboard-teacher"></i> Teachers</li>
+                <li data-tab="attendance"><i class="fas fa-clipboard-check"></i> Attendance</li>
+                <li data-tab="assignments"><i class="fas fa-tasks"></i> Assignments</li>
+                <li data-tab="classroom"><i class="fas fa-video"></i> Online Classroom</li>
+                <li data-tab="exams"><i class="fas fa-edit"></i> CBT Exams</li>
+                <li data-tab="reports"><i class="fas fa-chart-bar"></i> Reports</li>
+            </ul>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Dashboard Tab -->
+            <div id="dashboard" class="tab-content active">
+                <h2>Dashboard</h2>
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <h3>Total Students</h3>
+                        <p class="stat-value">1,245</p>
+                        <i class="fas fa-users stat-icon"></i>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Total Teachers</h3>
+                        <p class="stat-value">48</p>
+                        <i class="fas fa-chalkboard-teacher stat-icon"></i>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Active Classes</h3>
+                        <p class="stat-value">32</p>
+                        <i class="fas fa-door-open stat-icon"></i>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Pending Assignments</h3>
+                        <p class="stat-value">87</p>
+                        <i class="fas fa-tasks stat-icon"></i>
+                    </div>
+                </div>
+                <div class="recent-activities">
+                    <h3>Recent Activities</h3>
+                    <ul>
+                        <li>Math assignment submitted by John Doe</li>
+                        <li>Science class attendance taken</li>
+                        <li>New student registered: Sarah Smith</li>
+                        <li>CBT exam scheduled for Friday</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Students Tab -->
+            <div id="students" class="tab-content">
+                <h2>Student Management</h2>
+                <div class="action-bar">
+                    <button id="add-student-btn" class="btn-primary">Add New Student</button>
+                    <div class="search-box">
+                        <input type="text" placeholder="Search students...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                </div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Class</th>
+                            <th>Parent</th>
+                            <th>Contact</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ST001</td>
+                            <td>John Doe</td>
+                            <td>Grade 10A</td>
+                            <td>Jane Doe</td>
+                            <td>john.doe@example.com</td>
+                            <td>
+                                <button class="btn-edit"><i class="fas fa-edit"></i></button>
+                                <button class="btn-delete"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <!-- More student rows would be dynamically added -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Teachers Tab -->
+            <div id="teachers" class="tab-content">
+                <h2>Teacher Management</h2>
+                <div class="action-bar">
+                    <button id="add-teacher-btn" class="btn-primary">Add New Teacher</button>
+                    <div class="search-box">
+                        <input type="text" placeholder="Search teachers...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                </div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Subject</th>
+                            <th>Classes</th>
+                            <th>Contact</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>TC001</td>
+                            <td>Mr. Johnson</td>
+                            <td>Mathematics</td>
+                            <td>Grade 10A, Grade 11B</td>
+                            <td>johnson@school.edu</td>
+                            <td>
+                                <button class="btn-edit"><i class="fas fa-edit"></i></button>
+                                <button class="btn-delete"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <!-- More teacher rows would be dynamically added -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Attendance Tab -->
+            <div id="attendance" class="tab-content">
+                <h2>Attendance Management</h2>
+                <div class="attendance-controls">
+                    <div class="form-group">
+                        <label for="attendance-date">Date:</label>
+                        <input type="date" id="attendance-date">
+                    </div>
+                    <div class="form-group">
+                        <label for="attendance-class">Class:</label>
+                        <select id="attendance-class">
+                            <option value="">Select Class</option>
+                            <option value="10A">Grade 10A</option>
+                            <option value="10B">Grade 10B</option>
+                            <option value="11A">Grade 11A</option>
+                        </select>
+                    </div>
+                    <button id="take-attendance-btn" class="btn-primary">Take Attendance</button>
+                </div>
+                <div class="attendance-table-container">
+                    <table class="attendance-table">
+                        <thead>
+                            <tr>
+                                <th>Student ID</th>
+                                <th>Student Name</th>
+                                <th>Status</th>
+                                <th>Remarks</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>ST001</td>
+                                <td>John Doe</td>
+                                <td>
+                                    <select class="attendance-status">
+                                        <option value="present">Present</option>
+                                        <option value="absent">Absent</option>
+                                        <option value="late">Late</option>
+                                        <option value="excused">Excused</option>
+                                    </select>
+                                </td>
+                                <td><input type="text" class="attendance-remarks" placeholder="Optional remarks"></td>
+                            </tr>
+                            <!-- More attendance rows would be dynamically added -->
+                        </tbody>
+                    </table>
+                    <button id="save-attendance-btn" class="btn-primary">Save Attendance</button>
+                </div>
+            </div>
+
+            <!-- Assignments Tab -->
+            <div id="assignments" class="tab-content">
+                <h2>Assignment Management</h2>
+                <div class="assignment-actions">
+                    <button id="create-assignment-btn" class="btn-primary">Create New Assignment</button>
+                    <div class="assignment-filters">
+                        <select id="assignment-class-filter">
+                            <option value="">All Classes</option>
+                            <option value="10A">Grade 10A</option>
+                            <option value="10B">Grade 10B</option>
+                        </select>
+                        <select id="assignment-status-filter">
+                            <option value="">All Statuses</option>
+                            <option value="pending">Pending</option>
+                            <option value="submitted">Submitted</option>
+                            <option value="graded">Graded</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Assignment Creation Modal (hidden by default) -->
+                <div id="assignment-modal" class="modal">
+                    <div class="modal-content">
+                        <span class="close-modal">&times;</span>
+                        <h3>Create New Assignment</h3>
+                        <form id="assignment-form">
+                            <div class="form-group">
+                                <label for="assignment-title">Title:</label>
+                                <input type="text" id="assignment-title" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="assignment-class">Class:</label>
+                                <select id="assignment-class" required>
+                                    <option value="">Select Class</option>
+                                    <option value="10A">Grade 10A</option>
+                                    <option value="10B">Grade 10B</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="assignment-subject">Subject:</label>
+                                <select id="assignment-subject" required>
+                                    <option value="">Select Subject</option>
+                                    <option value="math">Mathematics</option>
+                                    <option value="science">Science</option>
+                                    <option value="english">English</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="assignment-due-date">Due Date:</label>
+                                <input type="datetime-local" id="assignment-due-date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="assignment-instructions">Instructions:</label>
+                                <textarea id="assignment-instructions" rows="4" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="assignment-file">Attach File:</label>
+                                <input type="file" id="assignment-file">
+                            </div>
+                            <button type="submit" class="btn-primary">Create Assignment</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Assignments List -->
+                <div class="assignments-list">
+                    <div class="assignment-card">
+                        <div class="assignment-header">
+                            <h3>Math Problem Set</h3>
+                            <span class="assignment-status pending">Pending</span>
+                        </div>
+                        <div class="assignment-details">
+                            <p><strong>Class:</strong> Grade 10A</p>
+                            <p><strong>Due:</strong> May 15, 2023</p>
+                            <p><strong>Submitted:</strong> 12/30 students</p>
+                        </div>
+                        <div class="assignment-actions">
+                            <button class="btn-view"><i class="fas fa-eye"></i> View</button>
+                            <button class="btn-edit"><i class="fas fa-edit"></i> Edit</button>
+                        </div>
+                    </div>
+                    <!-- More assignment cards would be dynamically added -->
+                </div>
+            </div>
+
+            <!-- Online Classroom Tab -->
+            <div id="classroom" class="tab-content">
+                <h2>Online Classroom</h2>
+                <div class="classroom-container">
+                    <div class="video-container">
+                        <div class="main-video">
+                            <video id="local-video" autoplay muted></video>
+                            <div class="video-controls">
+                                <button id="toggle-video"><i class="fas fa-video"></i></button>
+                                <button id="toggle-mic"><i class="fas fa-microphone"></i></button>
+                                <button id="share-screen"><i class="fas fa-desktop"></i></button>
+                                <button id="end-call" class="btn-danger"><i class="fas fa-phone-slash"></i></button>
+                            </div>
+                        </div>
+                        <div class="participant-videos">
+                            <!-- Other participants' videos would appear here -->
+                        </div>
+                    </div>
+                    <div class="classroom-sidebar">
+                        <div class="sidebar-tabs">
+                            <button class="sidebar-tab active" data-tab="participants">Participants</button>
+                            <button class="sidebar-tab" data-tab="chat">Chat</button>
+                            <button class="sidebar-tab" data-tab="whiteboard">Whiteboard</button>
+                        </div>
+                        <div class="sidebar-content">
+                            <div id="participants" class="sidebar-tab-content active">
+                                <ul class="participants-list">
+                                    <li>Teacher Johnson <span class="user-role">(Teacher)</span></li>
+                                    <li>John Doe</li>
+                                    <li>Sarah Smith</li>
+                                    <!-- More participants would be dynamically added -->
+                                </ul>
+                            </div>
+                            <div id="chat" class="sidebar-tab-content">
+                                <div class="chat-messages">
+                                    <div class="message">
+                                        <span class="sender">Teacher Johnson:</span>
+                                        <span class="message-text">Welcome to today's math class!</span>
+                                    </div>
+                                    <!-- More messages would be dynamically added -->
+                                </div>
+                                <div class="chat-input">
+                                    <input type="text" placeholder="Type your message...">
+                                    <button><i class="fas fa-paper-plane"></i></button>
+                                </div>
+                            </div>
+                            <div id="whiteboard" class="sidebar-tab-content">
+                                <canvas id="whiteboard-canvas"></canvas>
+                                <div class="whiteboard-tools">
+                                    <button data-tool="pen"><i class="fas fa-pen"></i></button>
+                                    <button data-tool="eraser"><i class="fas fa-eraser"></i></button>
+                                    <input type="color" id="whiteboard-color">
+                                    <button data-tool="clear"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CBT Exams Tab -->
+            <div id="exams" class="tab-content">
+                <h2>Computer-Based Testing</h2>
+                <div class="exam-actions">
+                    <button id="create-exam-btn" class="btn-primary">Create New Exam</button>
+                    <div class="exam-filters">
+                        <select id="exam-class-filter">
+                            <option value="">All Classes</option>
+                            <option value="10A">Grade 10A</option>
+                            <option value="10B">Grade 10B</option>
+                        </select>
+                        <select id="exam-status-filter">
+                            <option value="">All Statuses</option>
+                            <option value="draft">Draft</option>
+                            <option value="active">Active</option>
+                            <option value="completed">Completed</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Exam Creation Modal (hidden by default) -->
+                <div id="exam-modal" class="modal">
+                    <div class="modal-content">
+                        <span class="close-modal">&times;</span>
+                        <h3>Create New Exam</h3>
+                        <form id="exam-form">
+                            <div class="form-group">
+                                <label for="exam-title">Title:</label>
+                                <input type="text" id="exam-title" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="exam-class">Class:</label>
+                                <select id="exam-class" required>
+                                    <option value="">Select Class</option>
+                                    <option value="10A">Grade 10A</option>
+                                    <option value="10B">Grade 10B</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="exam-subject">Subject:</label>
+                                <select id="exam-subject" required>
+                                    <option value="">Select Subject</option>
+                                    <option value="math">Mathematics</option>
+                                    <option value="science">Science</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="exam-duration">Duration (minutes):</label>
+                                <input type="number" id="exam-duration" min="1" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="exam-start-time">Start Time:</label>
+                                <input type="datetime-local" id="exam-start-time" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="exam-end-time">End Time:</label>
+                                <input type="datetime-local" id="exam-end-time" required>
+                            </div>
+                            <div class="form-group">
+                                <label><input type="checkbox" id="exam-randomize"> Randomize question order</label>
+                            </div>
+                            <div class="form-group">
+                                <button type="button" id="add-question-btn" class="btn-secondary">Add Question</button>
+                            </div>
+                            <div id="questions-container">
+                                <!-- Questions will be added here dynamically -->
+                            </div>
+                            <button type="submit" class="btn-primary">Create Exam</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Exams List -->
+                <div class="exams-list">
+                    <div class="exam-card">
+                        <div class="exam-header">
+                            <h3>Midterm Mathematics Exam</h3>
+                            <span class="exam-status active">Active</span>
+                        </div>
+                        <div class="exam-details">
+                            <p><strong>Class:</strong> Grade 10A</p>
+                            <p><strong>Duration:</strong> 90 minutes</p>
+                            <p><strong>Date:</strong> May 20, 2023</p>
+                            <p><strong>Participants:</strong> 28/30 students</p>
+                        </div>
+                        <div class="exam-actions">
+                            <button class="btn-view"><i class="fas fa-eye"></i> View</button>
+                            <button class="btn-edit"><i class="fas fa-edit"></i> Edit</button>
+                            <button class="btn-results"><i class="fas fa-chart-bar"></i> Results</button>
+                        </div>
+                    </div>
+                    <!-- More exam cards would be dynamically added -->
+                </div>
+            </div>
+
+            <!-- Reports Tab -->
+            <div id="reports" class="tab-content">
+                <h2>Reports & Analytics</h2>
+                <div class="report-filters">
+                    <div class="form-group">
+                        <label for="report-type">Report Type:</label>
+                        <select id="report-type">
+                            <option value="attendance">Attendance</option>
+                            <option value="grades">Grades</option>
+                            <option value="assignments">Assignments</option>
+                            <option value="exams">Exams</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="report-class">Class:</label>
+                        <select id="report-class">
+                            <option value="">All Classes</option>
+                            <option value="10A">Grade 10A</option>
+                            <option value="10B">Grade 10B</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="report-time">Time Period:</label>
+                        <select id="report-time">
+                            <option value="week">This Week</option>
+                            <option value="month">This Month</option>
+                            <option value="term">This Term</option>
+                            <option value="custom">Custom</option>
+                        </select>
+                    </div>
+                    <button id="generate-report-btn" class="btn-primary">Generate Report</button>
+                </div>
+                <div class="report-results">
+                    <div class="chart-container">
+                        <canvas id="report-chart"></canvas>
+                    </div>
+                    <div class="report-table-container">
+                        <table class="report-table">
+                            <thead>
+                                <tr>
+                                    <th>Student</th>
+                                    <th>Present</th>
+                                    <th>Absent</th>
+                                    <th>Late</th>
+                                    <th>Percentage</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>John Doe</td>
+                                    <td>18</td>
+                                    <td>2</td>
+                                    <td>1</td>
+                                    <td>85.7%</td>
+                                </tr>
+                                <!-- More report rows would be dynamically added -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="report-actions">
+                        <button class="btn-export"><i class="fas fa-file-pdf"></i> Export as PDF</button>
+                        <button class="btn-export"><i class="fas fa-file-excel"></i> Export as Excel</button>
+                        <button class="btn-print"><i class="fas fa-print"></i> Print Report</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
